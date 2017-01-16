@@ -1,12 +1,18 @@
 import { NgModule, ErrorHandler } from '@angular/core';
+import { Storage } from '@ionic/storage';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-
+import { StopTimingPage } from '../pages/stop-timing/stop-timing';
+import { Projects } from '../providers/projects';
+import { HoursMinutesSeconds } from '../pipes/hours-minutes-seconds';
+ 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    StopTimingPage,
+    HoursMinutesSeconds
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -14,8 +20,9 @@ import { HomePage } from '../pages/home/home';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    StopTimingPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, Storage, Projects]
 })
 export class AppModule {}
